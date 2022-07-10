@@ -1,0 +1,55 @@
+//判断能构成回文串的子串个数
+//大数据集超时了
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
+
+public class Solution {
+  static Scanner inputObject = new Scanner(System.in);
+
+  public static void main(String args[]) {
+    int T;
+    T = inputObject.nextInt(); //number if cases
+    for (int test_case = 1; test_case <= T; ++test_case) {
+      System.out.print("Case #" + test_case + ": ");
+      solve();
+    }
+    inputObject.close();
+  }
+
+  static void solve() {
+	int N; //number of blocks
+	int M; //number of question
+	N = inputObject.nextInt();
+    M = inputObject.nextInt();
+	inputObject.nextLine();
+	String blocks=inputObject.nextLine();
+	int left,right;
+	int num=0;
+    for(int i=0;i<M;i++) {
+    	left=inputObject.nextInt();
+    	right=inputObject.nextInt();
+    	if(isPalindromes(blocks.substring(left-1, right))) num++;
+    }
+    System.out.println(num);
+  }
+  
+  static boolean isPalindromes(String s) {  
+	  if(s.length()==1) return true;
+	  int[] map=new int[26];
+	  for(int i=0;i<s.length();i++) {
+		  map[s.charAt(i)-'A']++;
+	  }
+	  boolean flag=false;
+	  for(int i:map) {
+		  if(i%2!=0){
+			  if(flag) return false;
+			  else flag=true;
+		  }
+		  
+	  }
+	  return true;
+  }
+}
