@@ -1,0 +1,67 @@
+# 本来以为光看字母数所以用了hashmap
+# 最后发现还要看顺序哈哈，遍历就行
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
+
+public class samples_sample {
+  static Scanner inputObject = new Scanner(System.in);
+
+  public static void main(String args[]) {
+    int T;
+    T = inputObject.nextInt(); //number if cases
+    inputObject.nextLine();
+    for (int test_case = 1; test_case <= T; ++test_case) {
+      System.out.print("Case #" + test_case + ": ");
+      solve();
+    }
+    inputObject.close();
+  }
+
+//  static void solve() {
+//	String input=inputObject.nextLine(); 
+//	String produced= inputObject.nextLine(); 
+//	int n1=input.length(),n2=produced.length();
+//	if(n1>n2) {
+//		System.out.println("IMPOSSIBLE");
+//		return;
+//	}
+//	HashMap<Character, Integer> map=new HashMap<>();
+//	for(int i=0;i<n2;i++) {
+//		char ch=produced.charAt(i);
+//		map.put(ch, map.getOrDefault(ch, 0)+1);
+//	}
+//	for(int i=0;i<n1;i++) {
+//		char ch=input.charAt(i);
+//		map.put(ch, map.getOrDefault(ch, 0)-1);
+//	}
+//	int total=0;
+//	for(int value:map.values()) {
+//		if(value<0) {
+//			System.out.println("IMPOSSIBLE");
+//			return;
+//		}
+//		total+=value;
+//	}
+//	System.out.println(total);
+//  }
+  
+  static void solve() {
+		String input=inputObject.nextLine(); 
+		String produced= inputObject.nextLine(); 
+		int n1=input.length(),n2=produced.length();
+		if(n1>n2) {
+			System.out.println("IMPOSSIBLE");
+			return;
+		}
+		int l=0,r=0;
+		for(int i=0;i<n2;i++) {
+			if(l<n1&&input.charAt(l)==produced.charAt(i)) l++;
+			else r++;
+		}
+		if(l==n1) System.out.println(r);
+		else System.out.println("IMPOSSIBLE");
+  }
+}
