@@ -1,0 +1,29 @@
+// 输入（N,M）:左括号数量，右括号数量
+// 输出：求平衡非空子串的最大数量
+// 我的想法很简单：找到左右括号数量最小的那个k=Math.min(N,M)，则只需求1+2+...+k
+
+import java.util.Scanner;
+
+public class Solution {
+  static Scanner inputObject = new Scanner(System.in);
+
+  public static void main(String args[]) {
+    int T;
+    T = inputObject.nextInt();
+    int N, M;
+    for (int test_case = 1; test_case <= T; ++test_case) {
+    	N = inputObject.nextInt();
+      M = inputObject.nextInt();
+      System.out.print("Case #" + test_case + ": ");
+      solve(N,M);
+    }
+    inputObject.close();
+  }
+
+  static void solve(int N,int M) {
+    int num=0;
+    for(int i=Math.min(M, N);i>0;i--) {
+    	num+=i;
+    }
+    System.out.println(num);
+  }
