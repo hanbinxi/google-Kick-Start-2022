@@ -1,0 +1,43 @@
+#这道题真的无语
+#一直错，最后才发现是int越界了，改成了long
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Scanner;
+
+public class Solution {
+  static Scanner inputObject = new Scanner(System.in);
+
+  public static void main(String args[]) {
+    int T;
+    T = inputObject.nextInt(); //number if cases
+    inputObject.nextLine();
+    for (int test_case = 1; test_case <= T; ++test_case) {
+      System.out.print("Case #" + test_case + ": ");
+      solve();
+    }
+    inputObject.close();
+  }
+  
+  static void solve() {
+	    long r=inputObject.nextLong();
+	    long a=inputObject.nextLong();
+	    long b=inputObject.nextLong();
+	    long num=0;
+		long sum=r*r;
+		while(r!=0) {
+			if(num%2==0){
+				r=r*a;
+			}
+			else {
+				r=(long)r/b;
+			}
+			num++;
+			sum+=(r*r);
+			
+		}
+		double res=sum*Math.PI;
+		System.out.printf("%.6f\n",res);
+  }
+}
